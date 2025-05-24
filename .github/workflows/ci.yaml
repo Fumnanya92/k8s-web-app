@@ -3,7 +3,7 @@ name: Terraform & Build→ECR
 on:
   push:
     branches:
-      - my-feature-branch   # runs on pushes to this branch
+      - main   # runs on pushes to this branch
   workflow_dispatch: {}     # allows manual triggering from the Actions UI
 
 env:
