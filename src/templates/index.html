@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gandalf & Colombo Time</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc, #cfdef3 100%);
+            color: #222;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            margin-top: 40px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(60,60,100,0.12);
+            padding: 40px 30px 30px 30px;
+            max-width: 420px;
+            width: 90vw;
+            text-align: center;
+        }
+        .gandalf-img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+            margin-bottom: 20px;
+        }
+        .time-box {
+            margin: 20px auto 0 auto;
+            padding: 18px 0 10px 0;
+            background: #f7fafc;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: inline-block;
+            width: 90%;
+        }
+        h1 {
+            margin-bottom: 8px;
+            font-size: 2.1em;
+            letter-spacing: 1px;
+        }
+        h2 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            color: #4a90e2;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 24px;
+        }
+        .metrics-link {
+            margin-top: 30px;
+            font-size: 1em;
+        }
+        .metrics-link a {
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .metrics-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gandalf Web Server</h1>
+        <div class="subtitle">A simple web app showing Gandalf's picture.</div>
+        <img class="gandalf-img" src="{{ image_url }}" alt="Gandalf">
+        <div style="margin: 24px 0;">
+            <button onclick="window.location.href='/colombo'" style="padding: 14px 32px; font-size: 1.1em; border-radius: 8px; border: none; background: #4a90e2; color: #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(74,144,226,0.15); transition: background 0.2s;">
+                Show Colombo Time
+            </button>
+        </div>
+        <div class="metrics-link">
+            Prometheus metrics available at <a href="/metrics">/metrics</a>
+        </div>
+    </div>
+</body>
+</html>

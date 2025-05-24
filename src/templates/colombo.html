@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colombo Time</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #f8ffae 0%, #43c6ac 100%);
+            color: #222;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .colombo-container {
+            background: rgba(255,255,255,0.95);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(60,60,100,0.13);
+            padding: 48px 36px 36px 36px;
+            max-width: 420px;
+            width: 90vw;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .city {
+            font-size: 2.2em;
+            color: #43c6ac;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+        .time {
+            font-size: 2.5em;
+            color: #222;
+            margin-bottom: 18px;
+            font-weight: bold;
+        }
+        .back-btn {
+            margin-top: 24px;
+            padding: 12px 28px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            border: none;
+            background: #4a90e2;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(74,144,226,0.15);
+            transition: background 0.2s;
+        }
+        .back-btn:hover {
+            background: #357ab8;
+        }
+    </style>
+</head>
+<body>
+    <div class="colombo-container">
+        <div class="city">Colombo, Sri Lanka</div>
+        <div class="time">{{ colombo_time }}</div>
+        <button class="back-btn" onclick="window.location.href='/'">Back to Gandalf</button>
+    </div>
+    <script>
+    function updateColomboTime() {
+        fetch('/colombo/time')
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('.time').textContent = data.colombo_time;
+            });
+    }
+    setInterval(updateColomboTime, 1000);
+    updateColomboTime();
+    </script>
+</body>
+</html>
