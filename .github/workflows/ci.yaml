@@ -15,7 +15,8 @@ jobs:
     name: Terraform
     runs-on: ubuntu-latest
     defaults:
-      working-directory: ./terraform
+      runs:
+        working-directory: ./terraform
     steps:
       - name: Checkout
         uses: actions/checkout@v4
