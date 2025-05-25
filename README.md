@@ -189,9 +189,9 @@ Your application is now live at `http://<Elastic-IP>/gandalf`, etc.
 
 ### Creating Alerts
 
-In Grafana 8+ builtin alerting:
+In Grafana 8+, built-in alerting:
 
-1. Edit any panel (e.g. API request rate).
+1. Edit any panel (e.g., API request rate).
 2. Go to **Alert** tab → **Create Alert**.
 3. Define rule:
 
@@ -229,13 +229,4 @@ To destroy everything:
 ```bash
 cd terraform
 terraform destroy -auto-approve
-```
-
----
-
-## License
-
-This project is licensed under the MIT License.
-
-```
 ```
