@@ -1,15 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: {name: gandalf-web}
+metadata:
+  name: gandalf-web
+  labels:
+    app: gandalf-web
 spec:
   replicas: 1
-  selector: {matchLabels: {app: gandalf-web}}
+  selector:
+    matchLabels:
+      app: gandalf-web
   template:
-    metadata: {labels: {app: gandalf-web}}
+    metadata:
+      labels:
+        app: gandalf-web
     spec:
-      securityContext: {runAsNonRoot: true, runAsUser: 1000}
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
       containers:
-      - name: web
-        image: gandalf-web:0.3
-        ports: [{containerPort: 80}]
-        resources: {limits: {cpu: "200m", memory: "128Mi"}}
+        - name: web
+          image: fumnanya92/gandalf-web:latest
+          ports:
+            - containerPort: 80

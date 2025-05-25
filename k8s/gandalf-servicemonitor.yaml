@@ -6,13 +6,13 @@ metadata:
   labels:
     app: gandalf-web
 spec:
-  namespaceSelector:
-    matchNames:
-      - default
   selector:
     matchLabels:
       app: gandalf-web
+  namespaceSelector:
+    matchNames:
+      - default
   endpoints:
-    - port: http
+    - port: 80
       path: /metrics
       interval: 15s
