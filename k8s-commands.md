@@ -112,7 +112,7 @@ docker push $DOCKERHUB_USER/gandalf-web:latest
 
 ---
 
-## 🚀 3. Local Dev with Minikube
+## 3. Local Dev with Minikube
 
 ```bash
 # Start cluster (Docker driver)
