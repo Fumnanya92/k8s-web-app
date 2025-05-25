@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: <YOUR-ELASTIC-IP>            # if you want DNS, you can set a hostname here
+  - host: 35.89.79.183           
     http:
       paths:
         - path: /gandalf(/|$)(.*)

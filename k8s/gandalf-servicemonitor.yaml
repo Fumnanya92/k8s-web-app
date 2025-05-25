@@ -1,18 +1,18 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: gandalf-monitor
+  name: gandalfmonitor
   namespace: monitoring
   labels:
     app: gandalf-web
 spec:
-  selector:
-    matchLabels:
-      app: gandalf-web
   namespaceSelector:
     matchNames:
       - default
+  selector:
+    matchLabels:
+      app: gandalf-web
   endpoints:
-    - port: 80
+    - port: http            
       path: /metrics
       interval: 15s

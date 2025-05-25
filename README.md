@@ -125,6 +125,7 @@ On first boot, the EC2 runs `/modules/ec2/minikube.sh` which:
    ```
 
 Your application is now live at `http://<Elastic-IP>/gandalf`, etc.
+![alt text](image-1.png) ![alt text](image-2.png)
 
 ---
 
