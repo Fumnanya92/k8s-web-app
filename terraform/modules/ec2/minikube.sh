@@ -44,4 +44,5 @@ helm repo update
 
 
 
+
 echo "User-data bootstrap complete – cluster, monitoring and Gandalf are up."
