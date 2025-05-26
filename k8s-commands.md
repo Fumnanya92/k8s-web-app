@@ -1,30 +1,57 @@
-helm install prom prometheus-community/kube-prometheus-stack \
-  --namespace monitoring --create-namespace \
-  --set prometheus.prometheusSpec.maximumStartupDurationSeconds=300
 
 
+eval $(minikube docker-env)      # Point Docker CLI to Minikube's internal Docker
+docker build --no-cache -t gandalf-web:latest .
 
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+kubectl get pods
+
+sudo apt update
+sudo apt install nginx -y
+
+sudo nano /etc/nginx/sites-available/default
+sudo nginx -t       # Validate again
+sudo systemctl restart nginx
+
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
+-
+helm install hello prometheus-community/kube-prometheus-stack \
+  --namespace monitoring \
+  --create-namespace \
+  --set prometheus.prometheusSpec.maximumStartupDurationSeconds=300
 
-helm upgrade --install monitoring prometheus-community/kube-prometheus-stack \
-  --namespace monitoring --create-namespace \
-  --set prometheus.service.type=NodePort         \
-  --set prometheus.service.nodePort=30090         \
-  --set grafana.service.type=NodePort            \
-  --set grafana.service.nodePort=30100
+kubectl get pods -n monitoring
 
-INGRESS
-# add the ingress-nginx chart repo
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-helm repo update
+if needed 
+kubectl patch svc gandalf-grafana -n monitoring -p '{
+  "spec": {
+    "type": "NodePort",
+    "ports": [{
+      "port": 80,
+      "targetPort": 3000,
+      "nodePort": 30000,
+      "protocol": "TCP"
+    }]
+  }
+}'
 
-# install ingress-nginx in its own namespace
-helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
-  --namespace ingress-nginx --create-namespace \
-  --set controller.hostPort.enabled=true \
-  --set controller.hostPort.ports.http=80
 
+
+
+kubectl patch svc gandalf-grafana -n monitoring -p '{
+  "spec": {
+    "type": "ClusterIP",
+    "ports": [{
+      "port": 80,
+      "targetPort": 3000,
+      "protocol": "TCP"
+    }]
+  }
+}'
 
 
 # Build image (no cache)
