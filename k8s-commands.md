@@ -1,3 +1,9 @@
+helm install prom prometheus-community/kube-prometheus-stack \
+  --namespace monitoring --create-namespace \
+  --set prometheus.prometheusSpec.maximumStartupDurationSeconds=300
+
+
+
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 

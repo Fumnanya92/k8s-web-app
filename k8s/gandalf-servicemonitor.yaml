@@ -5,6 +5,7 @@ metadata:
   namespace: monitoring
   labels:
     app: gandalf-web
+    release: boma
 spec:
   namespaceSelector:
     matchNames:
@@ -13,6 +14,6 @@ spec:
     matchLabels:
       app: gandalf-web
   endpoints:
-    - port: http            
+    - port: http
       path: /metrics
       interval: 15s
